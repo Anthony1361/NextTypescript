@@ -1,95 +1,62 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+'use client'
+
+import Button, { primaryButtonProps, secondaryButtonProps } from "@/components/Button";
+import Children from "@/components/Children";
+import Counter from "@/components/Counter";
+import DestructureProps from "@/components/DestructureProps";
+import ElementWrapper from "@/components/ElementWrapper";
+import Form from "@/components/Form";
+import ReuseableCom1 from "@/components/ReuseableCom1";
+import ReuseableCom2 from "@/components/ReuseableCom2";
+import User from "@/components/User";
+import UserAgain from "@/components/UserAgain";
+import UserAgain2 from "@/components/UserAgain2";
 
 export default function Home() {
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
+    <section>
+      <User name="alex" age={20}></User>
+      <DestructureProps name="john" age={23}></DestructureProps>
+      <UserAgain name="Amy" age={18}></UserAgain>
+      <UserAgain2 name="donald" age={25}></UserAgain2>
+      <hr></hr>
+      <Children>
+        <p>This is a children</p>
+      </Children>
+      <hr></hr>
+      <ReuseableCom1
+        username="Alex"
+        email="alex@gmail.com"
+        age={20}
+        location={["Earth", "USA"]}
+      ></ReuseableCom1>
+      <ReuseableCom2
+        username="Huxn"
+        email="huxn@gmail.com"
+        age={21}
+        location={["Mars", "Unknown"]}
+        admin="yes"
+      ></ReuseableCom2>
+      <hr></hr>
+      <Counter></Counter>
+      <hr></hr> <br></br>
+      <Form></Form>
+      <hr></hr> <br></br>
+      <ElementWrapper elementType="div" className="box">
+         <p>This is a div element with a class name of Box</p>
+      </ElementWrapper>
 
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
+      <ElementWrapper elementType="h1" onClick={() => alert('h1 clicked')}>
+          Header Text
+      </ElementWrapper>
 
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
+      <ElementWrapper elementType="button" onClick={() => alert('Button clicked')}>
+          Click Me
+      </ElementWrapper>
+      <hr></hr> <br></br>
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+      <Button {...primaryButtonProps}></Button>
+      <Button {...secondaryButtonProps}></Button>
+    </section>
   );
 }
